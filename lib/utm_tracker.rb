@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "utm_tracker/version"
+require "utm_tracker/helper"
 
 module UtmTracker
   class Client
@@ -19,7 +20,12 @@ module UtmTracker
     protected
 
     def decode_utm_tags
-      utm_data = utm_data.each{|k, v| data[k] = CGI.unescape(v)}
+      @utm_data = {
+        source: utm_data['source'],
+        medium: utm_data['medium'],
+        campaing: utm_data['campaign'],
+        term: utm_data['term']
+      }
     end
 
     def save_utm_tags_into_database!
