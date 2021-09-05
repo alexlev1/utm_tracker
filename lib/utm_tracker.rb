@@ -12,7 +12,7 @@ module UtmTracker
     end
 
     def call
-      decode_utm_data
+      decode_utm_tags
       save_utm_tags_into_database!
     end
 
