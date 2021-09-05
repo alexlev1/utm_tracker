@@ -16,7 +16,7 @@ module UtmTracker
       save_utm_tags_into_database!
     end
 
-    private
+    protected
 
     def decode_utm_tags
       utm_data = utm_data.select{|k, v| v.present?}.each{|k, v| data[k] = CGI.unescape(v)}

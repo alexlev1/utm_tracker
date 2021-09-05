@@ -36,18 +36,16 @@ $ rails db:migrate
 
 2. Prepare link into user registration controller
 
-$ https://example.com?utm_source=google&utm_medium=cpc&utm_campaign=testcampaign&utm_content={adgroupid}&utm_term={keyword}
+$ https://example.com?utm[source]=google&utm[medium]=cpc&utm[campaign]=testcampaign&utm[content]={adgroupid}&utm[term]={keyword}
 
-3. Add utm_data into permit params
+3. Generate code for ApplicationController
 
-```ruby
-params.require(:user).permit(:email, :password, utm_data: {})
-```
+#
 
-4. Into user registration controller create UtmTracker client and put user object and utm_data:
+4. Into user registration controller add UtmTracker client after save user and put user object and utm_data:
 
 ```ruby
-@utm = UtmTracker::Client.new(object: @user, utm_data: params[:user][:utm_data])
+@utm = UtmTracker::Client.new(object: @user, utm: session[:utm])
 @utm.call
 ```
 
