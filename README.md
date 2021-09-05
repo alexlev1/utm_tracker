@@ -16,13 +16,42 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
+## Usage for Rails
 
-    $ gem install utm_tracker
+1. You need to generate Rails migration and add utm_data into your User model for UTM-tags
 
-## Usage
+$ rails g migration add_utm_data_to_executors utm_data:jsonb
 
-TODO: Write usage instructions here
+and add not null and default modificators into rails migrations
+
+```ruby
+def change
+  add_column :users, :utm_data, :jsonb, null: false, default: {}
+end
+```
+
+and then:
+
+$ rails db:migrate
+
+2. Prepare link into user registration controller
+
+$ https://example.com?utm_source=google&utm_medium=cpc&utm_campaign=testcampaign&utm_content={adgroupid}&utm_term={keyword}
+
+3. Add utm_data into permit params
+
+```ruby
+params.require(:user).permit(:email, :password, utm_data: {})
+```
+
+4. Into user registration controller create UtmTracker client and put user object and utm_data:
+
+```ruby
+@utm = UtmTracker::Client.new(object: @user, utm_data: params[:user][:utm_data])
+@utm.call
+```
+
+5. PROFIT!!!
 
 ## Development
 
@@ -32,5 +61,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/utm_tracker.
+Bug reports and pull requests are welcome on GitHub at https://github.com/alexlev1/utm_tracker.
 
