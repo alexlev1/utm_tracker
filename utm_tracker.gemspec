@@ -11,8 +11,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/alexlev1/utm_tracker"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.1")
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/alexlev1/utm_tracker"
   spec.metadata["changelog_uri"] = "https://github.com/alexlev1/utm_tracker"
