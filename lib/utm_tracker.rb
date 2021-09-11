@@ -1,35 +1,31 @@
 # frozen_string_literal: true
 
-require "utm_tracker/version"
-require "utm_tracker/helper"
+require_relative "utm_tracker/version"
+require_relative "utm_tracker/helper"
+require_relative "utm_tracker/matcher"
 
 module UtmTracker
   class Client
-    attr_accessor :object, :utm_data
+    attr_accessor :object, :utm_matcher
 
     def initialize(object, utm_data)
       @object = object
-      @utm_data = utm_data
+      @utm_matcher = UtmTracker::Matcher.new(utm_data)
     end
 
     def call
-      decode_utm_tags
+      match_utm_tags
       save_utm_tags_into_database!
     end
 
     protected
 
-    def decode_utm_tags
-      @utm_data = {
-        source: utm_data['source'],
-        medium: utm_data['medium'],
-        campaing: utm_data['campaign'],
-        term: utm_data['term']
-      }
+    def match_utm_tags
+      @utm_matcher.call
     end
 
     def save_utm_tags_into_database!
-      object.update!(utm_data: utm_data)
+      object.update!(utm_data: @utm_matcher.utm)
     end
   end
 end
