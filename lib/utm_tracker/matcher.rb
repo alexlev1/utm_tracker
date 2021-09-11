@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UtmTracker
   class Matcher
     attr_accessor :utm_data, :utm
@@ -11,7 +13,7 @@ module UtmTracker
       utm_source
       utm_content
       utm_medium
-      utm_campaing
+      utm_campaign
       utm_term
     end
 
@@ -29,8 +31,8 @@ module UtmTracker
       utm[:utm_medium] = utm_data['medium'] if utm_data['medium']
     end
 
-    def utm_campaing
-      utm[:utm_campaing] = utm_data['source'] if utm_data['campaing']
+    def utm_campaign
+      utm[:utm_campaign] = utm_data['campaign'] if utm_data['campaign']
     end
 
     def utm_term
