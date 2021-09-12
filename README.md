@@ -23,7 +23,7 @@ And then execute:
 
 1. You need to generate Rails migration and add utm_data into your User model for UTM-tags:
 
-$ rails g migration add_utm_data_to_executors utm_data:jsonb
+$ rails g migration add_utm_data_to_users utm_data:jsonb
 
 and add not null and default modificators into rails migrations:
 ```ruby
@@ -56,7 +56,7 @@ Add this callback where you plan to receive advertising traffic.
 
 5. Into user registration controller add UtmTracker client after save user and put user object and session[:utm]:
 ```ruby
-@utm = UtmTracker::Client.new(object: @user, utm: session[:utm])
+@utm = UtmTracker::Client.new(@user, session[:utm])
 @utm.call
 ```
 
