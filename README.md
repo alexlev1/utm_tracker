@@ -38,7 +38,7 @@ $ rails db:migrate
 
 2. Prepare link into user registration controller:
 
-$ https://example.com?utm[source]=google&utm[medium]=cpc&utm[campaign]=testcampaign&utm[content]={adgroupid}&utm[term]={keyword}
+$ https://example.com?utm_data[source]=google&utm_data[medium]=cpc&utm_data[campaign]=testcampaign&utm[content]={adgroupid}&utm[term]={keyword}
 
 3. Add into ApplicationController next helper for save utm_tags into current_user session:
 ```ruby

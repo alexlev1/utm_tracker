@@ -5,7 +5,7 @@ module UtmTracker
     protected
 
     def get_utm_data
-      session[:utm_data] ||= params[:utm]
+      session[:utm_data] ||= params[:utm_data]
     end
   end
 end
