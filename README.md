@@ -5,7 +5,7 @@ This gem allow to save UTM tags into your Rails app. UtmTracker allows you to sa
 ## Requirements
 
 - Ruby 2.7.1
-- Rails 6.1.x
+- Rails 6 / 7
 
 ## Installation
 
@@ -17,7 +17,7 @@ gem 'utm_tracker'
 
 And then execute:
 
-    $ bundle install
+$ bundle install
 
 ## Usage for Rails
 
@@ -38,7 +38,7 @@ $ rails db:migrate
 
 2. Prepare link into user registration controller:
 
-$ https://example.com?utm_data[source]=google&utm_data[medium]=cpc&utm_data[campaign]=testcampaign&utm[content]={adgroupid}&utm[term]={keyword}
+$ https://example.com?utm_data[source]=google&utm_data[medium]=cpc&utm_data[campaign]=testcampaign&utm_data[content]={adgroupid}&utm_data[term]={keyword}
 
 3. Add into ApplicationController next helper for save utm_tags into current_user session:
 ```ruby
@@ -54,9 +54,9 @@ before_action :get_utm_data
 
 Add this callback where you plan to receive advertising traffic.
 
-5. Into user registration controller add UtmTracker client after save user and put user object and session[:utm]:
+5. Into user registration controller add UtmTracker client after save user and put user object and session[:utm_data]:
 ```ruby
-@utm = UtmTracker::Client.new(@user, session[:utm])
+@utm = UtmTracker::Client.new(@user, session[:utm_data])
 @utm.call
 ```
 
