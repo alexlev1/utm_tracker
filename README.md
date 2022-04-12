@@ -58,7 +58,7 @@ Add this callback where you plan to receive advertising traffic.
 ```ruby
 def after_sign_in_path_for(resource)
   generate_utm_tags
-  something_path
+  something_path_for_redirecting # add own path
 end
 
 def generate_utm_tags
