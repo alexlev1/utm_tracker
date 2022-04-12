@@ -14,8 +14,11 @@ module UtmTracker
     end
 
     def call
+      return :nok if utm_matcher.utm_data.nil?
+
       match_utm_tags
       save_utm_tags_into_database!
+      :ok
     end
 
     protected

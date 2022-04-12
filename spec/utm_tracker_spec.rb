@@ -5,9 +5,9 @@ RSpec.describe UtmTracker::Client do
 
   let(:object) { double('Object', :update! => true)}
 
-  before { subject.call }
+  context 'generate utm tags (if utm_data persist?)' do
+    before { subject.call }
 
-  context 'generate utm tags' do
     let(:utm_data) do
       {
         'source' => 'google',
@@ -37,5 +37,11 @@ RSpec.describe UtmTracker::Client do
     it 'return utm_term' do
       expect(subject.utm_matcher.utm[:utm_term]).to eq 'free'
     end
+  end
+
+  context 'if utm_data empty?' do
+    let(:utm_data) { nil }
+
+    it { expect(subject.call).to eq :nok }
   end
 end

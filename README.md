@@ -62,8 +62,7 @@ def after_sign_in_path_for(resource)
 end
 
 def generate_utm_tags
-  @utm = UtmTracker::Client.new(current_user, session[:utm_data])
-  @utm.call
+  UtmTracker::Client.new(current_user, session[:utm_data]).call
 end
 ```
 
