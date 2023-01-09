@@ -10,11 +10,11 @@ RSpec.describe UtmTracker::Client do
 
     let(:utm_data) do
       {
-        'source' => 'google',
-        'medium' => 'cpc',
-        'content' => 'landing_page',
-        'campaign' => 'promo',
-        'term' => 'free'
+        source: 'google',
+        medium: 'cpc',
+        content: 'landing_page',
+        campaign: 'promo',
+        term: 'free'
       }
     end
 

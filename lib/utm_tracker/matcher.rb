@@ -20,23 +20,23 @@ module UtmTracker
     private
 
     def utm_source
-      utm[:utm_source] = utm_data['source'] if utm_data['source']
+      utm[:utm_source] = utm_data[:source] if utm_data[:source]
     end
 
     def utm_content
-      utm[:utm_content] = utm_data['content'] if utm_data['content']
+      utm[:utm_content] = utm_data[:content] if utm_data[:content]
     end
 
     def utm_medium
-      utm[:utm_medium] = utm_data['medium'] if utm_data['medium']
+      utm[:utm_medium] = utm_data[:medium] if utm_data[:medium]
     end
 
     def utm_campaign
-      utm[:utm_campaign] = utm_data['campaign'] if utm_data['campaign']
+      utm[:utm_campaign] = utm_data[:campaign] if utm_data[:campaign]
     end
 
     def utm_term
-      utm[:utm_term] = utm_data['term'] if utm_data['term']
+      utm[:utm_term] = utm_data[:term] if utm_data[:term]
     end
   end
 end
