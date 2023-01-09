@@ -38,7 +38,9 @@ and then:
 
 2. Prepare link into user registration controller:
 
-`$ https://example.com?utm_data[source]=google&utm_data[medium]=cpc&utm_data[campaign]=testcampaign&utm_data[content]={adgroupid}&utm_data[term]={keyword}`
+`$ https://example.com?utm_source=google&utm_medium=cpc&utm_campaign=testcampaign&utm_content={adgroupid}&utm_term={keyword}`
+
+Important: gem can woek only with this utm tags!
 
 3. Add into ApplicationController next helper for save utm_tags into current_user session:
 ```ruby
@@ -54,11 +56,11 @@ before_action :get_utm_data
 
 Add this callback where you plan to receive advertising traffic.
 
-5. Into user registration controller or after_sign_in_path_for method, add UtmTracker client current_user object and session[:utm_data], for_example:
+5. Into user registration controller or after_sign_in_path_for method, add UtmTracker client current_user object and session, for_example:
 ```ruby
 def after_sign_in_path_for(resource)
   generate_utm_tags
-  something_path_for_redirecting # add own path
+  something_path_for_redirecting # add your own path
 end
 
 def generate_utm_tags
