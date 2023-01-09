@@ -40,7 +40,7 @@ RSpec.describe UtmTracker::Client do
   end
 
   context 'if utm_data empty?' do
-    let(:utm_data) { nil }
+    let(:utm_data) { {} }
 
     it { expect(subject.call).to eq :nok }
   end

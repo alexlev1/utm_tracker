@@ -14,7 +14,7 @@ module UtmTracker
     end
 
     def call
-      return :nok if utm_matcher.utm_data.nil?
+      return :nok if utm_matcher.utm_data.empty?
 
       match_utm_tags
       save_utm_tags_into_database!

@@ -5,7 +5,7 @@ module UtmTracker
     attr_accessor :utm_data, :utm
 
     def initialize(utm_data, utm = {})
-      @utm_data = utm_data
+      @utm_data = utm_data.transform_keys!(&:to_sym)
       @utm = utm
     end
 
