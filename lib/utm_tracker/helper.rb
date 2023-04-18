@@ -7,7 +7,8 @@ module UtmTracker
       "campaign",
       "content",
       "medium",
-      "term"
+      "term",
+      "id"
     ].freeze
 
     protected
@@ -20,6 +21,7 @@ module UtmTracker
           content: params[:utm_content],
           medium: params[:utm_medium],
           term: params[:utm_term],
+          id: params[:utm_id]
         }
       else
         {}
