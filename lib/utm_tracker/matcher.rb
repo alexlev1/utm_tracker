@@ -15,6 +15,7 @@ module UtmTracker
       utm_medium
       utm_campaign
       utm_term
+      utm_id
     end
 
     private
@@ -37,6 +38,10 @@ module UtmTracker
 
     def utm_term
       utm[:utm_term] = utm_data[:term] if utm_data[:term]
+    end
+    
+    def utm_id
+      utm[:utm_id] = utm_data[:id] if utm_data[:id]
     end
   end
 end
